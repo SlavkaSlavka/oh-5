@@ -1,18 +1,35 @@
-// Напиши скрипт проверки количества товаров на складе.
-//  Есть переменные total (количество товаров на складе) и ordered (единиц товара в заказе).
+// Напиши класс User для создания пользователя со следующим свойствами:
 
-// Сравни эти значения и по результатам выведи:
+// name - строка
+// age - число
+// followers - число
+// Добавь метод getInfo(), который, выводит строку: User ${имя} is ${возраст} years old and has ${кол-во фоловеров} followers
 
-// Если в заказе указано число, превышающее количество товаров на складе, то выведи сообщение "На складе недостаточно твоаров!".
-// В другом случае выводи сообщение "Заказ оформлен, с вами свяжется менеджер".
-// Проверь работоспособность кода с разными значениями переменной ordered, например 20, 80 и 130.
+class User {
+  constructor({ name = "", age = 0, followers = 0 }) {
+    this.name = name;
+    this.age = age;
+    this.followers = followers;
+  }
+  getInfo() {
+    console.log(
+      `User ${this.name} is ${this.age} years old and has ${this.followers} followers`
+    );
+  }
+}
 
-const total = 100;
-const ordered = 130;
+const mango = new User({
+  name: "Mango",
+  age: 2,
+  followers: 20,
+});
 
-let isOrderOk = (stockQuantity, orderedQuantity) =>
-  stockQuantity >= orderedQuantity
-    ? "Заказ оформлен, с вами свяжется менеджер"
-    : "На складе недостаточно твоаров!";
+mango.getInfo(); // User Mango is 2 years old and has 20 followers
 
-console.log(isOrderOk(total, ordered));
+const poly = new User({
+  name: "Poly",
+  age: 3,
+  followers: 17,
+});
+
+poly.getInfo(); // User Poly is 3 years old and has 17 followers
